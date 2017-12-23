@@ -115,6 +115,22 @@ bot.on("message", (message) => {
     console.log(message.author.tag + " called Buffsuki in " + message.guild.name);
   }
 
+  //neko
+  if(message.content.startsWith(config.prefix + "neko")) {
+    var imageArray = [
+        "./images/neko1.jpg",
+        "./images/neko2.jpg",
+        "./images/neko3.jpg", 
+        "./images/neko4.jpg",
+        "./images/neko5.jpg"
+    ]
+    var randomImage = Math.floor(Math.random()*imageArray.length);
+    var imagePost = imageArray[randomImage]
+    message.channel.send("", {
+      file:imagePost
+    });
+    console.log(message.author.tag + " executed the neko command in " + message.guild.name);
+  }
 });
 
 //login
