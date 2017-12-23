@@ -118,6 +118,7 @@ bot.on("message", (message) => {
   //neko
   if(message.content.startsWith(config.prefix + "neko")) {
     var imageArray = [
+      //images not owned by me, credit to original artists
         "./images/neko1.jpg",
         "./images/neko2.jpg",
         "./images/neko3.jpg", 
