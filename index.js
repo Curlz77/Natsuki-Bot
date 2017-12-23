@@ -13,13 +13,13 @@ bot.on('ready', () => {
 bot.on("message", (message) => {
   if(message.author.bot) return;
 
-    //help
+    //help - credit to kaoala7577 (DotBot repository), modified
     if(message.content.startsWith(config.prefix + "help")) {
-      message.channel.send("Ugh fine. **It's not because I like you or anything!!** *baka.*\n**Prefix:** `" + config.prefix + "`\n\n__Fun Stuff__\n\n`" + config.prefix + "becauseyou` - Natsuki is a better person because of you :)\n`" + config.prefix + "cake` - Natsuki give you cake\n`" + config.prefix + "cookie` - Natsuki gives you a cookie\n`" + config.prefix + "cute` - Call Natsuki cute\n`" + config.prefix + "poem` - Displays a random Natsuki poem\n`" + config.prefix + "wansumfuk` - Ask Natsuki for sum fuk\n\n__Helpful Stuff__\n\n`" + config.prefix + "help` - Displays this message\n`" + config.prefix + "info` - Displays the bot info message\n`" + config.prefix + "ping` - Pings Natsuki\n`" + config.prefix + "support` - Sends an invite to the support guild");
+      message.channel.send("Ugh fine. **It's not because I like you or anything!!** *baka.*\n**Prefix:** `" + config.prefix + "`\n\n__Fun Stuff__\n\n`" + config.prefix + "becauseyou` - Natsuki is a better person because of you :)\n`" + config.prefix + "buffsuki` - Call Buffsuki\n`" + config.prefix + "cake` - Natsuki give you cake\n`" + config.prefix + "cookie` - Natsuki gives you a cookie\n`" + config.prefix + "cute` - Call Natsuki cute\n`" + config.prefix + "poem` - Displays a random Natsuki poem\n`" + config.prefix + "wansumfuk` - Ask Natsuki for sum fuk\n\n__Helpful Stuff__\n\n`" + config.prefix + "help` - Displays this message\n`" + config.prefix + "info` - Displays the bot info message\n`" + config.prefix + "ping` - Pings Natsuki\n`" + config.prefix + "support` - Sends an invite to the support guild");
       console.log(message.author.tag + " executed the help command in " + message.guild.name);
   }
 
-    //ping
+    //ping - credit to kaoala7577 (DotBot repository), modified
   if(message.content.startsWith(config.prefix + "ping")) {
     message.channel.send("I don't want to play ping-pong, dummy!").then(rsp => {
       rsp.edit("I don't want to play ping-pong, dummy! Anyway, your ping is `" + (rsp.createdTimestamp - message.createdTimestamp) + " ms `");
@@ -32,10 +32,10 @@ bot.on("message", (message) => {
     console.log(message.author.tag + " executed the cute command in " + message.guild.name);
   }
 
-  //info
+  //info - credit to kaoala7577 (DotBot repository), modified
   if(message.content.startsWith(config.prefix + "info")) {
     let embed = new Discord.RichEmbed()
-    .setDescription(bot.user.username + " is a tsundere bot created by Curlz#8184 with assistance from kaoala#7577. She was created in the [Javascript](https://www.javascript.com/) scripting language with the [Discord.js](https://discord.js.org/#/) library.")
+    .setDescription(bot.user.username + " is a tsundere bot created by Curlz#8184 with assistance from kaoala#7577. She was created in the [Javascript](https://www.javascript.com/) scripting language with the [Discord.js](https://discord.js.org/#/) library. Note that she's still in development so not everything I want is implemented.")
     .setColor(0xfa89c0)
     .setAuthor("Bot Info")
     .setThumbnail(bot.user.displayAvatarURL)
@@ -105,6 +105,31 @@ bot.on("message", (message) => {
     .setTimestamp();
     message.channel.send({embed});
     console.log(message.author.tag + " executed the info command in " + message.guild.name);
+  }
+
+  //buffsuki
+  if(message.content.startsWith(config.prefix + "buffsuki" )) {
+    message.channel.send("**You called?**", {
+        file:"http://i0.kym-cdn.com/photos/images/newsfeed/001/310/724/709.png"
+    });
+    console.log(message.author.tag + " called Buffsuki in " + message.guild.name);
+  }
+
+  //neko
+  if(message.content.startsWith(config.prefix + "neko")) {
+    var imageArray = [
+        "./images/neko1.jpg",
+        "./images/neko2.jpg",
+        "./images/neko3.jpg", 
+        "./images/neko4.jpg",
+        "./images/neko5.jpg"
+    ]
+    var randomImage = Math.floor(Math.random()*imageArray.length);
+    var imagePost = imageArray[randomImage]
+    message.channel.send("", {
+      file:imagePost
+    });
+    console.log(message.author.tag + " executed the neko command in " + message.guild.name);
   }
 });
 
