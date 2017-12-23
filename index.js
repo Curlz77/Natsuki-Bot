@@ -134,5 +134,7 @@ bot.on("message", (message) => {
   }
 });
 
+//kao can i just say you're amazing and ily
+
 //login
 bot.login(config.token);
