@@ -6,7 +6,8 @@ var config = require("./config.json");
 //ready
 bot.on('ready', () => {
   console.log('Logged in as ' + bot.user.username + "#" + bot.user.discriminator);
-  bot.user.setGame("Baking | " + config.prefix + "help");
+  	var content = "Baking | " + config.prefix + "help";
+	bot.user.setGame(content);
 });
 
 //start
@@ -132,6 +133,16 @@ bot.on("message", (message) => {
     });
     console.log(message.author.tag + " executed the neko command in " + message.guild.name);
   }
+  
+  //gameset (owner only
+	if(message.content.startsWith(config.prefix + "game ")) {
+		if(!message.author.id == config.ownerID) return message.channel.send("Bot owner only");
+		content = message.content.substring(6);
+		content = content.replace("{prefix}", config.prefix).replace("{count}", bot.guilds.size);
+		message.channel.send("Game has been set to `" + content + "`");
+		bot.user.setGame(content);
+		console.log("'Game' has been executed in the guild '" + message.guild.name + "'. Game was set to '" + content + "'");
+	}
 });
 
 //login
