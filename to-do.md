@@ -4,7 +4,7 @@
 
 # low priority
 
-* Set game to "Baking in {guild number} guilds | -help (im not sure if this is too long but idc)
+
 
 # very low priority + easy
 
