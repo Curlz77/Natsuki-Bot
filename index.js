@@ -6,8 +6,8 @@ var config = require("./config.json");
 //ready
 bot.on('ready', () => {
   console.log('Logged in as ' + bot.user.username + "#" + bot.user.discriminator);
-  	var content = "Baking | " + config.prefix + "help";
-	bot.user.setGame(content);
+    var content = "Baking in " + bot.guilds.size + " guilds | " + config.prefix + "help";
+  bot.user.setGame(content);
 });
 
 //start
@@ -16,7 +16,7 @@ bot.on("message", (message) => {
 
     //help - credit to kaoala7577 (DotBot repository), modified
     if(message.content.startsWith(config.prefix + "help")) {
-      message.channel.send("Ugh fine. **It's not because I like you or anything!!** *baka.*\n**Prefix:** `" + config.prefix + "`\n\n__Fun Stuff__\n\n`" + config.prefix + "becauseyou` - Natsuki is a better person because of you :)\n`" + config.prefix + "buffsuki` - Call Buffsuki\n`" + config.prefix + "cake` - Natsuki gives you cake\n`" + config.prefix + "cookie` - Natsuki gives you a cookie\n`" + config.prefix + "cute` - Call Natsuki cute\n`" + config.prefix + "neko` - Displays a random neko\n`" + config.prefix + "poem` - Displays a random Natsuki poem\n`" + config.prefix + "wansumfuk` - Ask Natsuki for sum fuk\n\n__Helpful Stuff__\n\n`" + config.prefix + "help` - Displays this message\n`" + config.prefix + "info` - Displays the bot info message\n`" + config.prefix + "ping` - Pings Natsuki\n`" + config.prefix + "support` - Sends an invite to the support guild");
+      message.channel.send("Ugh fine. **It's not because I like you or anything!!** *baka.*\n**Prefix:** `" + config.prefix + "`\n\n__Fun Stuff__\n\n`" + config.prefix + "becauseyou` - Natsuki is a better person because of you :)\n`" + config.prefix + "buffsuki` - Call Buffsuki\n`" + config.prefix + "cake` - Natsuki gives you some cake\n`" + config.prefix + "cookie` - Natsuki gives you a cookie\n`" + config.prefix + "cute` - Call Natsuki cute\n`" + config.prefix + "neko` - Displays a random neko\n`" + config.prefix + "poem` - Displays a random Natsuki poem\n`" + config.prefix + "wansumfuk` - Ask Natsuki for sum fuk\n\n__Helpful Stuff__\n\n`" + config.prefix + "help` - Displays this message\n`" + config.prefix + "info` - Displays the bot info message\n`" + config.prefix + "monika` - Get an invite link for Monika Bot\n`" + config.prefix + "ping` - Pings Natsuki\n`" + config.prefix + "support` - Sends an invite to the support guild\n\n__Bot Owner Only__\n\n`" + config.prefix + "game <game>` - sets Natsuki's game.");
       console.log(message.author.tag + " executed the help command in " + message.guild.name);
   }
 
@@ -134,7 +134,7 @@ bot.on("message", (message) => {
     console.log(message.author.tag + " executed the neko command in " + message.guild.name);
   }
   
-  //gameset (owner only
+  //gameset (owner only)
 	if(message.content.startsWith(config.prefix + "game ")) {
 		if(!message.author.id == config.ownerID) return message.channel.send("Bot owner only");
 		content = message.content.substring(6);
@@ -142,11 +142,24 @@ bot.on("message", (message) => {
 		message.channel.send("Game has been set to `" + content + "`");
 		bot.user.setGame(content);
 		console.log("'Game' has been executed in the guild '" + message.guild.name + "'. Game was set to '" + content + "'");
-	}
+  }
+  
+  //monika
+  if(message.content.startsWith(config.prefix + "monika")) {
+    let embed = new Discord.RichEmbed()
+    .setDescription("Ugh fine, I'll get Monika over here.")
+    .setColor(0xfa89c0)
+    .setThumbnail(bot.user.displayAvatarURL)
+    .setFooter("It's not like I like you or anything... baka")
+    .addField("Invite Link", "[Monika Bot](https://discordapp.com/api/oauth2/authorize?client_id=402160845515259924&permissions=8&scope=bot)")
+    .setTimestamp();
+    message.channel.send({embed});
+  }
 });
 
 //kao can i just say you're amazing and ily
 //seriously though ily thank you you're amazing 
+//kao if ur reading this ur a coooooooooooooooool cucumber
 
 //login
 bot.login(config.token);
