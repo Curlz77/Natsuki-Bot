@@ -154,12 +154,19 @@ bot.on("message", (message) => {
     .addField("Invite Link", "[Monika Bot](https://discordapp.com/api/oauth2/authorize?client_id=402160845515259924&permissions=8&scope=bot)")
     .setTimestamp();
     message.channel.send({embed});
+    console.log(message.author.tag + " has executed the 'Monika' command in " + message.guild.name)
+  }
+
+  //baka
+  const triggers = ["baka", "BAKA", "BAKa", "BAka", "Baka", "bAKA", "baKA", "bakA", "baKa", "bAka", "BakA", "bAKa", "BaKa", "bAkA"]
+  if(triggers.some(word => message.content.includes(word)) ) {
+    message.channel.send("What are you doing? That's **my** word! *Baka*");
+    console.log("Natsuki responded to " + message.author.tag + " saying baka in " + message.guild.name);
   }
 });
 
 //kao can i just say you're amazing and ily
 //seriously though ily thank you you're amazing 
-//kao if ur reading this ur a coooooooooooooooool cucumber
 
 //login
 bot.login(config.token);
