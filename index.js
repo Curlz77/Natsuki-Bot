@@ -124,7 +124,9 @@ bot.on("message", (message) => {
         "./images/neko2.jpg",
         "./images/neko3.jpg", 
         "./images/neko4.jpg",
-        "./images/neko5.jpg"
+        "./images/neko5.jpg",
+        "./images/neko6.jpg",
+        "./images/neko7.jpg"
     ]
     var randomImage = Math.floor(Math.random()*imageArray.length);
     var imagePost = imageArray[randomImage]
