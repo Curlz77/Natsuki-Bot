@@ -16,7 +16,7 @@ bot.on("message", (message) => {
 
     //help - credit to kaoala7577 (DotBot repository), modified
     if(message.content.startsWith(config.prefix + "help")) {
-      message.channel.send("Ugh fine. **It's not because I like you or anything!!** *baka.*\n**Prefix:** `" + config.prefix + "`\n\n__Fun Stuff__\n\n`" + config.prefix + "becauseyou` - Natsuki is a better person because of you :)\n`" + config.prefix + "buffsuki` - Call Buffsuki\n`" + config.prefix + "cake` - Natsuki gives you some cake\n`" + config.prefix + "cookie` - Natsuki gives you a cookie\n`" + config.prefix + "cute` - Call Natsuki cute\n`" + config.prefix + "neko` - Displays a random neko\n`" + config.prefix + "poem` - Displays a random Natsuki poem\n`" + config.prefix + "wansumfuk` - Ask Natsuki for sum fuk\n\n__Helpful Stuff__\n\n`" + config.prefix + "help` - Displays this message\n`" + config.prefix + "info` - Displays the bot info message\n`" + config.prefix + "monika` - Get an invite link for Monika Bot\n`" + config.prefix + "ping` - Pings Natsuki\n`" + config.prefix + "support` - Sends an invite to the support guild\n\n__Bot Owner Only__\n\n`" + config.prefix + "game <game>` - sets Natsuki's game.");
+      message.channel.send("Ugh fine. **It's not because I like you or anything!!** *baka.*\n**Prefix:** `" + config.prefix + "`\n\n__Fun Stuff__\n\n`" + config.prefix + "becauseyou` - Natsuki is a better person because of you :)\n`" + config.prefix + "buffsuki` - Call Buffsuki\n`" + config.prefix + "cake` - Natsuki gives you some cake\n`" + config.prefix + "cookie` - Natsuki gives you a cookie\n`" + config.prefix + "cute` - Call Natsuki cute\n`" + config.prefix + "inspiration` - Displays 5 random Natsuki words from the poem minigame\n`" + config.prefix + "neko` - Displays a random neko\n`" + config.prefix + "poem` - Displays a random Natsuki poem\n`" + config.prefix + "wansumfuk` - Ask Natsuki for sum fuk\n\n__Helpful Stuff__\n\n`" + config.prefix + "help` - Displays this message\n`" + config.prefix + "info` - Displays the bot info message\n`" + config.prefix + "monika` - Get an invite link for Monika Bot\n`" + config.prefix + "ping` - Pings Natsuki\n`" + config.prefix + "support` - Sends an invite to the support guild\n\n__Bot Owner Only__\n\n`" + config.prefix + "game <game>` - sets Natsuki's game.");
       console.log(message.author.tag + " executed the help command in " + message.guild.name);
   }
 
@@ -165,6 +165,81 @@ bot.on("message", (message) => {
     message.channel.send("What are you doing? That's **my** word! *Baka*");
     console.log("Natsuki responded to " + message.author.tag + " saying baka in " + message.guild.name);
   }
+
+  //poem ideas
+  if(message.content.startsWith(config.prefix + "inspiration")) {
+    var poemWords = [
+      "Anger",
+      "Anime",
+      "Blanket", 
+      "Boop", 
+      "Bouncy", 
+      "Bubbles", 
+      "Bunny",
+      "Candy", 
+      "Cheeks", 
+      "Chocolate", 
+      "Clouds", 
+      "Cute",
+      "Doki-Doki",
+      "Email",
+      "Fantasy",
+      "Fluffy",
+      "Games",
+      "Giggle",
+      "Hair",
+      "Headphones", 
+      "Heartbeat", 
+      "Hop",
+      "Jump",
+      "Jumpy",
+      "Kawaii",
+      "Kiss", 
+      "Kitty",
+      "Lipstick",
+      "Lollipop",
+      "Marshmallow",
+      "Melody",
+      "Milk",
+      "Mouse",
+      "Nibble",
+      "Nightgown",
+      "Papa",
+      "Parfait",
+      "Peace",
+      "Pink",
+      "Playground",
+      "Poof",
+      "Pout",
+      "Puppy",
+      "Pure",
+      "Ribbon",
+      "Shiny",
+      "Shopping",
+      "Skipping",
+      "Skirt",
+      "Socks",
+      "Spinning",
+      "Sticky",
+      "Strawberry",
+      "Sugar",
+      "Summer",
+      "Swimsuit",
+      "Twirl",
+      "Valentine",
+      "Vanilla",
+      "Waterfall",
+      "Whisper",
+      "Whistle"
+    ]
+    var randomNumber1 = Math.floor(Math.random()*poemWords.length);
+    var randomNumber2 = Math.floor(Math.random()*poemWords.length);
+    var randomNumber3 = Math.floor(Math.random()*poemWords.length);
+    var randomNumber4 = Math.floor(Math.random()*poemWords.length);
+    var randomNumber5 = Math.floor(Math.random()*poemWords.length);
+    message.channel.send("Hey, maybe you could try and write a poem with these words... **It's not like I'll like it or anything!**\n\n" +`${poemWords[randomNumber1]}` + ", " + `${poemWords[randomNumber2]}` + ", " + `${poemWords[randomNumber3]}` + ", " + `${poemWords[randomNumber4]}` + ", " + `${poemWords[randomNumber5]}`);
+  }
+
 });
 
 //kao can i just say you're amazing and ily
