@@ -4,7 +4,7 @@
 
 # low priority
 
-
+* Prevent -inspiration from repeating words
 
 # very low priority + easy
 
