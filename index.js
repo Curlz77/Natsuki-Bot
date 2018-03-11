@@ -4,7 +4,6 @@ const bot = new Discord.Client();
 const config = require("./utils/config.json");
 const arrayFile = require("./utils/arrays.js");
 const utils = require("./utils/functions.js");
-const fs = require("fs");
 var prefix = config.prefix;
 
 //ready
