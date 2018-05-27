@@ -2,7 +2,7 @@
 const Discord = require('discord.js');
 const bot = new Discord.Client();
 const config = require("./utils/config.json");
-const arrayFile = require("./utils/arrays.js");
+const arrayFile = require("./utils/array.js");
 const utils = require("./utils/functions.js");
 var prefix = config.prefix;
 
@@ -10,7 +10,7 @@ var prefix = config.prefix;
 bot.on('ready', () => {
   console.log('Logged in as ' + bot.user.username + "#" + bot.user.discriminator);
   var content = "Baking in " + bot.guilds.size + " guilds | " + prefix + "help";
-  bot.user.setActivity(content);
+  bot.user.setGame(content);
 });
 
 //start
@@ -19,7 +19,7 @@ bot.on("message", (message) => {
 
     //help - credit to kaoala7577 (DotBot repository), modified
   if(message.content.startsWith(prefix + "help")) {
-    message.channel.send("Ugh fine. **It's not because I like you or anything!!** *baka.*\n**Prefix:** `" + prefix + "`\n\n__Fun Stuff__\n\n`" + prefix + "becauseyou` - Natsuki is a better person because of you :)\n`" + prefix + "buffsuki` - Call Buffsuki\n`" + prefix + "cake` - Natsuki gives you some cake\n`" + prefix + "cookie` - Natsuki gives you a cookie\n`" + prefix + "cute` - Call Natsuki cute\n`" + prefix + "inspiration` - Displays 5 random Natsuki words from the poem minigame\n`" + prefix + "neko` - Displays a random neko\n`" + prefix + "poem` - Displays a random Natsuki poem\n`" + prefix + "wansumfuk` - Ask Natsuki for sum fuk\n\n__Helpful Stuff__\n\n`" + prefix + "help` - Displays this message\n`" + prefix + "info` - Displays the bot info message\n`" + prefix + "monika` - Get an invite link for Monika Bot\n`" + prefix + "ping` - Pings Natsuki\n`" + prefix + "support` - Sends an invite to the support guild\n\n__Bot Owner Only__\n\n`" + prefix + "game <game>` - sets Natsuki's game.");
+    message.channel.send("Ugh fine. **It's not because I like you or anything!!** *baka.*\n**Prefix:** `" + prefix + "`\n\n__Fun Stuff__\n\n`" + prefix + "becauseyou` - Natsuki is a better person because of you :)\n`" + prefix + "buffsuki` - Call Buffsuki\n`" + prefix + "cake` - Natsuki gives you some cake\n`" + prefix + "chibi` - Displays a chibi DDLC sticker \n`" + prefix + "cookie` - Natsuki gives you a cookie\n`" + prefix + "cute` - Call Natsuki cute\n`" + prefix + "inspiration` - Displays 5 random Natsuki words from the poem minigame\n`" + prefix + "neko` - Displays a random DDLC neko\n`" + prefix + "poem` - Displays a random Natsuki poem\n`" + prefix + "quote` - Displays a random Natsuki quote\n`" + prefix + "wansumfuk` - Ask Natsuki for sum fuk\n\n__Helpful Stuff__\n\n`" + prefix + "help` - Displays this message\n`" + prefix + "info` - Displays the bot info message\n`" + prefix + "monika` - Get an invite link for Monika Bot\n`" + prefix + "ping` - Pings Natsuki\n`" + prefix + "support` - Sends an invite to the support guild\n\n__Bot Owner Only__\n\n`" + prefix + "game <game>` - sets Natsuki's game.");
     console.log(message.author.tag + " executed the help command in " + message.guild.name);
   } else
 
@@ -100,6 +100,7 @@ bot.on("message", (message) => {
   } else
 
   //buffsuki
+  //credit to the original artist for this glorious meme
   if(message.content.startsWith(prefix + "buffsuki" )) {
     message.channel.send("**You called?**", {
         file:"http://i0.kym-cdn.com/photos/images/newsfeed/001/310/724/709.png"
@@ -108,14 +109,15 @@ bot.on("message", (message) => {
   } else
 
   //neko
-  if(message.content.startsWith(prefix + "neko")) {
-    //images not owned by me, credit to original artists
-    var imagePost = `./images/neko${utils.random([1,2,3,4,5,6,7])}.jpg`;
+  //all images (except neko28 and 29, which are edits I created) belong to the original artists
+  if(message.content.startsWith(prefix + `neko`)) {
+    var images1 = `./images/neko/neko${utils.random(["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R"])}.jpg`;
+    var images2 = `./images/neko/neko${utils.random(["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31"])}.png`;
     message.channel.send("", {
-      file:imagePost
+        file: (utils.random([images1, images2]))
     });
-    console.log(message.author.tag + " executed the neko command in " + message.guild.name);
-  } else
+    console.log(`${message.author.tag} executed the neko command in ${message.guild.name}`);
+} else
   
   //gameset (owner only)
 	if(message.content.startsWith(prefix + "game ")) {
@@ -150,6 +152,30 @@ bot.on("message", (message) => {
   if(message.content.startsWith(prefix + "inspiration")) {
     var [a,b,c,d,e] = [utils.random(arrayFile.poem),utils.random(arrayFile.poem),utils.random(arrayFile.poem),utils.random(arrayFile.poem),utils.random(arrayFile.poem)];
     message.channel.send(`Hey, maybe you could try and write a poem with these words... **It's not like I'll like it or anything!**\n\n ${a}, ${b}, ${c}, ${d}, ${e}`);
+  } else
+
+  //quote
+  if(message.content.startsWith(prefix + "quote")) {
+    var quotes = [
+      "'If you're gonna judge, you can do it from the glass on the other side of that door.'",
+      "'People can try, but that's about it.'",
+      "'If you just came for the cupcakes, I would be super pissed.'",
+      "'**Fucking Monikammmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm**'",
+      "'M-Manga is literature!'",
+    ]
+    var randomQuote = Math.floor(Math.random()*quotes.length);
+    message.channel.send(`${quotes[randomQuote]}`)
+    console.log(message.author.tag + " executed the quote command in " + message.guild.name);
+  } else
+
+  //chibi
+  //none of the images are owned by me, credit to the original artists
+  if(message.content.startsWith(prefix + "chibi")) {
+    var images1 = `./images/chibi/chibi${utils.random(["1","2","3","4","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31","32","33","34","35","36","37","38","39","40","41"])}.png`;
+    message.channel.send("", {
+      file: images1
+    });
+    console.log(message.author.tag + "executed the chibi command in " + message.guild.name);
   }
 
 });
